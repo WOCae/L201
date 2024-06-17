@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbtfuom7tky3"]
+
+[ext_resource type="Script" path="res://enemy1/Enemy1.gd" id="1_ija6t"]
+[ext_resource type="PackedScene" uid="uid://s7njlcasydkq" path="res://UI/gauge.tscn" id="2_iedf1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtoq3"]
+size = Vector2(50, 50)
+
+[node name="Enemy" type="Area2D"]
+script = ExtResource("1_ija6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jtoq3")
+
+[node name="gauge" parent="." instance=ExtResource("2_iedf1")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
